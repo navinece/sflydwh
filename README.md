@@ -3,6 +3,8 @@ This repository contains the python programs to calculate the Simple LTV for cus
 
 After analyisng the requirements, As a first step , based on the events collected i have started with the data modelling step and below are the design decisions for the same. 
 
+
+
 Design Decision#1: Build a A single event table for all the event types collected at sfly websites.
 
 Problem statement: Events types ( Customer,site_visit,image,order) collected at sfly websites needs to stored in a efficents and flexible Data model which will futher used for computing Simpleltv values for the customers. 
@@ -12,6 +14,8 @@ Design Solution:
 2. The table contains the common attributes as keys. (customer_id,event_timestamp and event_type). 
 3. As the Type of events grow, event table will be the single source for all calculations and can accomadate new events
 4. new attributes can be added in JSON 
+
+
 
 
 Design Decision#2: Build a A single event table for ingestion  - Dictionary,list data structures
@@ -42,12 +46,13 @@ for dollar amount, while ingestion the python programs does a transformation to 
 image : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(image_id), camera_make,camera_model]
 for dollar amount, while ingestion the python programs does a transformation to extract only the  dollar amounts (float data type) for further computing the total dollar amount of a customer. 
 
-
 Assumptions: 
 
 1. Whenever the customer visits sfly website, there will be customer and site_visit event created and sent for ingestion irrespective of the he makes an order/uploads a image.
 2.Inline with above assumption, an order/Image upload event must have a coresponding customer/site_visit event. 
 3. whenever the customer just visits sfly website and does not make an order/image upload, an order/image is not created and inline with our desing assumptions for the ingetsion module. 
+
+
 
 
 Design Decision#3: Build a Dictionary for Simple LTV calcuation 
@@ -72,6 +77,8 @@ timeframe is the number of weeks (SimpleLTV) for the customer events ingested in
 
 
 Once the above dictionary is computed, the dictionary is transformed into a list (ltvfinallist)  and the list is sorted based on the SimpleLTV values in ascending order and last 10 elements (highest simplelTV)  is retrived from the list and written into the file. 
+
+
 
 
 
