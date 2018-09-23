@@ -109,13 +109,18 @@ After sucessfully ingesting the data, the method returns back the eventsDataDict
 
 Method spec: 
 1. accepts the topXcustomerscount (10) and eventsdatadict data dictionary which contains the data ingested. 
+
 2. Intialises a empty dictionary ltvdict ltvdict[customer_id]  = List [ Total_Number_of_Site_visits, Total_Dollar_amount, SimpleLTV, timeframe ]
+
 3. Calls the method computeWeek(maxdate,mindate) to compute the duration of weeks which is max(event_timestamp) - min(event_timestamp) 
+
 4. Computes the Total_number of visits by iterating through the site_visit event in the eventsdatadict data dictionary   and computing the total number of visits for each customer by incrementing the Total_number of visits values in the ltvdict[customer_id][0] ltv dictionary.
+
 5.Computes the Total_Dollar_amount by iterating through the Order event in the eventsdatadict data dictionary   and computing the total dollar amount spent by each customer by summing up the dollar amount values in the ltvdict[customer_id][1] ltv dictionary.
+
 6. Once step 4 and 5 is completed in brute force techinque, the simpleLTv is calculated by iterating through the ltvdict dictionary and the formula 52(Total_Number_of_Site_visits * Total_Dollar_amount) * t is calcuated for each customer_id key in the dictionary ltvdict[customer_id][2] = 52 * ltvdict[customer_id][1] * ltvdict[customer_id][0] * t
 
-7.Once all the values are computed within the ltvdict dictionary , the dictinary is transformed into a list list[customer_id, Total_Number_of_Site_visits,Total_Dollar_amount,simpleLTV,Duration ) 
+7. Once all the values are computed within the ltvdict dictionary , the dictinary is transformed into a list list[customer_id, Total_Number_of_Site_visits,Total_Dollar_amount,simpleLTV,Duration ) 
 and the list is sorted by the simpleLTV value in ascending order and last 10 elements is sliced from the list and write method
 WriteTopX(ltvfinallist,topXcustomers) is invoked to write the final top10simpleltv customers into the file in the /tmp/output/YYYYMMDD_YYYYMMDDHHMMSS_SimpleLTV_TOP10_Customers.dat
 
