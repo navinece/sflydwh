@@ -44,7 +44,7 @@ order : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id
 for dollar amount, while ingestion the python programs does a transformation to extract only the  dollar amounts (float data type) for further computing the total dollar amount of a customer. 
 
 image : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(image_id), camera_make,camera_model]
-for dollar amount, while ingestion the python programs does a transformation to extract only the  dollar amounts (float data type) for further computing the total dollar amount of a customer. 
+
 
 Assumptions: 
 
