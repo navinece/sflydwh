@@ -34,7 +34,7 @@ where customer_id is the customer's unique id to represent a customer
 event_time  is the timetstamp where the event is collected 
 event_type - type of the event like customer,order,site_visit and image 
 
-Definition for each events ingetsted into eventsdatadict dictionary  : 
+Definition for each events ingested into eventsdatadict dictionary  : 
 Customer: eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,last_name,adr_city and adr_state]
 
 Site_visit : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(page_id), number_of_vists]
