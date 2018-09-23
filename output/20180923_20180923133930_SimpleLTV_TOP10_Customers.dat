@@ -1,0 +1,11 @@
+Customer_Id,Number_Of_Visits,Total_Order_amount, SimpleLTV, Duration
+96f55c7d8f66,1,10.34,5376.8,1week
+96f55c7d8f64,1,10.34,5376.8,1week
+96f55c7d8f44,1,11.34,5896.8,1week
+96f55c7d8f48,1,12.34,6416.8,1week
+96f55c7d8f46,1,13.34,6936.8,1week
+96f55c7d8f52,2,21.2,22048.0,17weeks
+96f55c7d8f50,2,25.75,26780.0,4weeks
+96f55c7d8f54,3,23.14,36098.4,5weeks
+96f55c7d8f42,1,100.0,52000.0,1week
+96f55c7d8f70,1,112.2,58344.0,1week
