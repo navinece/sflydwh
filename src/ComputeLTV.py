@@ -38,25 +38,8 @@ def Ingest(events,eventsDataDict):
                                                          dollar_amount]
 
         else:
-            print ( "Warning: New events are being Ingested or Incorrect event types are present in the file !. Please check ")
+            print ( "Ingest Method: Warning: New events are being Ingested or Incorrect event types are present in the file !. Please check ")
     return eventsDataDict
-
-
-
-def computeWeek(maxdate,mindate):
- #max event_timestamp from each customer_id call while intialising the dictionary ltvdict
- maxDate =   datetime.strptime( maxdate, '%Y-%m-%dT%H:%M:%S.%fZ').date()
- #min event_timestamp from each customer_id call while intialising the dictionary ltvdict
- minDate=   datetime.strptime(mindate, '%Y-%m-%dT%H:%M:%S.%fZ').date()
- #calculating the monday from the max date and min dates
- monday2 = (maxDate - timedelta(days=maxDate.weekday()))
- monday1 = (minDate - timedelta(days=minDate.weekday()))
- num_of_weeks = (monday2 - monday1).days / 7
- if  num_of_weeks == 0 or num_of_weeks == 1 :
-     return '1' + 'week'
- else:
-     return  str ((monday2 - monday1).days / 7 ) + 'weeks'
-
 
 def TopXSimpleLTVCustomers(topXcustomers, eventsdatadict):
     ltvdict = {}
@@ -140,6 +123,21 @@ def TopXSimpleLTVCustomers(topXcustomers, eventsdatadict):
 
 
 
+def computeWeek(maxdate,mindate):
+ #max event_timestamp from each customer_id call while intialising the dictionary ltvdict
+ maxDate =   datetime.strptime( maxdate, '%Y-%m-%dT%H:%M:%S.%fZ').date()
+ #min event_timestamp from each customer_id call while intialising the dictionary ltvdict
+ minDate=   datetime.strptime(mindate, '%Y-%m-%dT%H:%M:%S.%fZ').date()
+ #calculating the monday from the max date and min dates
+ monday2 = (maxDate - timedelta(days=maxDate.weekday()))
+ monday1 = (minDate - timedelta(days=minDate.weekday()))
+ num_of_weeks = (monday2 - monday1).days / 7
+ if  num_of_weeks == 0 or num_of_weeks == 1 :
+     return '1' + 'week'
+ else:
+     return  str ((monday2 - monday1).days / 7 ) + 'weeks'
+
+
 
 def SortGetTopX(TopXCustomerList,topXcustomers):
     def getKey(item):
@@ -168,4 +166,4 @@ def WriteTopX(TopXCustomerList,topXcustomers):
 
     for i in range(len(TopXCustomerList)):
         f.write(str(TopXCustomerList[i][0]) + "," + str(TopXCustomerList[i][1]) + "," + str(TopXCustomerList[i][2]) + "," + str(TopXCustomerList[i][3]) + "," + str(TopXCustomerList[i][4])+ "\n");
-    return  "\n\n\nTop" + str(topXcustomers) + " highest SimpleLTV customer report is complete and available in the directory /tmp/output/" + str(topXLTVCustomers) + " for your review"
+    return  "\n\nTop" + str(topXcustomers) + " highest SimpleLTV customer report is complete and available in the directory /tmp/output/" + str(topXLTVCustomers) + " for your review\n\n"
