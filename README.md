@@ -5,7 +5,7 @@ After analyisng the requirements, As a first step , based on the events collecte
 
 
 
-Design Decision#1: Build a A single event table for all the event types collected at sfly websites.
+Design Decision#1: Build  A single event table for all the event types collected at sfly websites.
 
 Problem statement: Events types ( Customer,site_visit,image,order) collected at sfly websites needs to stored in a efficent and flexible Data model which can be used for storing future new event types collected at sfly websites and will futher used for computing Simpleltv values for the customers. 
 
@@ -18,7 +18,7 @@ Design Solution:
 
 
 
-Design Decision#2: Build a A single event table for ingestion using Dictionary,list data structures
+Design Decision#2: Build  A single event table for ingestion using Dictionary,list data structures
 
 Problem statement: Events types ( Customer,site_visit,image,order) collected at sfly websites needs to stored in efficent Data structure which has in-memory processing capabilities. 
 
