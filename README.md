@@ -1,7 +1,7 @@
 # sflydwh
 This repository contains the python programs to calculate the Simple LTV for customer events collected at sfly websites
 
-After analyisng the requirements, As a first step , based on the events collected i have started with the data modelling step and below are the design decisions for the same. 
+After analysing the requirements, As a first step , based on the events collected i have started with the data modelling step and below are the design decisions for the same. 
 
 
 
@@ -20,7 +20,7 @@ Design Solution:
 
 Design Decision#2: Build  A single event table for ingestion using Dictionary,list data structures
 
-Problem statement: Events types ( Customer,site_visit,image,order) collected at sfly websites needs to stored in efficent Data structure which has in-memory processing capabilities. 
+Problem statement: Events types ( Customer,site_visit,image,order) collected at sfly websites needs to stored in a efficent Data structure which has in-memory processing capabilities. 
 
 Design solution: 
 
@@ -37,11 +37,11 @@ event_type - type of the event like customer,order,site_visit and image
 Definition for each events ingested into eventsdatadict dictionary  : 
 Customer: eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,last_name,adr_city and adr_state]
 
-Site_visit : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(page_id), number_of_vists]
-where in the python program, for each site_visit event, the python program defaults to a value of 1 for further computing the number of visits. 
+Site_visit : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(page_id), number_of_visits]
+where in the python program, for each site_visit event, the python program defaults to a value of 1 (number of visits) for further computing the number of visits. 
 
 order : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(order_id), dollar_amount]
-for dollar amount, while ingestion the python programs does a transformation to extract only the  dollar amounts (float data type) for further computing the total dollar amount of a customer. 
+for dollar amount, while ingestion the python programs does a transformation to extract only the  dollar amounts (excludes USD string and extracts dollar value in float data type) for further computing the total dollar amount of a customer. 
 
 image : eventsdatadict[customer_id, event_time, event_type]  = List [customer_id, event_time, event_type,verb,key(image_id), camera_make,camera_model]
 
@@ -61,7 +61,7 @@ Problem statement: TOP 10 customers simpleLTV calcuations need to be calculated 
 
 Design solution: 
 
-For the Simple LTV, single "ltvdict" dictionary data structure will be created by extarcting the events information ingested into the eventsdatadict ingestion dictionary. Time complexity to build the "ltvdict" dictionary is O(N) and Space complexity is O(1) since we intialise the dictionary before computation. 
+For the Simple LTV, single "ltvdict" dictionary data structure will be created by extracting the events information ingested into the eventsdatadict ingestion dictionary. Time complexity to build the "ltvdict" dictionary is O(N) and Space complexity is O(1) since we intialise the dictionary before computation. 
 
 Definition for "ltvdict"  dictionary  :
 
@@ -130,22 +130,6 @@ Unit tests:
 Unittest.py - steps to call
 python Unittest.py  
 1.Unit test for Compute weeks method.
-2. unit tests for ingetsion method
-3. unit test for sort method. 
-4. Unit test for write method. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+2. unit test for sort method. 
 
 
