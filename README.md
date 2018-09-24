@@ -1,5 +1,5 @@
 # sflydwh
-This repository contains the python programs to calculate the Simple LTV for customer events collected at sfly websites
+This repository contains the python programs to ingest events and calculate the Simple LTV for customer events collected at sfly websites
 
 After analysing the requirements, As a first step , based on the events collected i have started with the data modelling step and below are the design decisions for the same. 
 
